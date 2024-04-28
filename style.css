@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: hsla(0, 0%, 0%, 0.356);
+}
+
+.panel-container {
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+#mainpanel {
+  background-color: hsla(80, 61%, 50%, 0.315);
+}
+
+#highPriorityPanel {
+  background-color: rgba(255, 0, 0, 0.295);
+}
+
+#donePanel {
+  background-color: hsla(0, 0%, 50%, 0.192);
+}

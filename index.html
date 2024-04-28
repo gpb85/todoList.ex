@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="top-header">
+        <div class="sign-menu">
+          <ul>
+            <li><a href="#">signIn</a></li>
+            <li><a href="#">signUp</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-logo">
+        <h1>todoList</h1>
+        <span><img src="" alt="logo-pic" /></span>
+      </div>
+
+      <div class="bottom header"></div>
+    </header>
+    <div class="list container">
+      <div class="form-container">
+        <form>
+          <label for="task">Task</label>
+          <input type="text" id="task" placeholder="TaskName" />
+          <textarea
+            name="text"
+            id="text"
+            cols="30"
+            rows="10"
+            placeholder="Task's details"
+          ></textarea>
+        </form>
+        <button type="button" onclick="addToPanel()">Add Task</button>
+        <button type="button" id="deleteAll">Delete All</button>
+        <button type="button" id="highPriorityButton">toEmergency</button>
+        <button type="button" id="doneButton">it's Done</button>
+      </div>
+    </div>
+    <div class="panel-container">
+      <div id="mainPanel"></div>
+      <div id="highPriorityPanel"></div>
+      <div id="donePanel"></div>
+    </div>
+    <script src="clock.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
