@@ -51,6 +51,7 @@ function renderList(list, targetID) {
     let deleteButton = document.createElement("button");
     let doneButton = document.createElement("button");
     let doneMainButton = document.createElement("button");
+    let editButton = document.createElement("button");
     if (list === todoList) {
       deleteButton.innerHTML = "delete";
       deleteButton.addEventListener("click", () => {
@@ -60,10 +61,15 @@ function renderList(list, targetID) {
       doneMainButton.addEventListener("click", () => {
         transferFromMain(todo.id);
       });
+      editButton.innerHTML = "edit";
+      editButton.addEventListener("click", () => {
+        edit(todo.id);
+      });
       li.prepend(checkbox);
       li.appendChild(textNode);
       li.appendChild(deleteButton);
       li.appendChild(doneMainButton);
+      li.appendChild(editButton);
       todoUl.appendChild(li);
     } else if (list === highPriorityList) {
       doneButton.innerHTML = "Done";
@@ -152,6 +158,36 @@ function transfer(id) {
       saveToLocaleStorage();
     }
   }
+}
+
+function edit(id) {
+  let todoItem = todoList.find((item) => item.id === id);
+  if (!todoItem) return;
+
+  //create editForm
+  let form = document.createElement("form");
+  let taskInput = document.createElement("input");
+  taskInput.value = todoItem.task;
+  let textArea = document.createElement("textarea");
+  textArea.value = todoItem.text;
+  let saveButton = document.createElement("button");
+  saveButton.innerHTML = "save";
+  saveButton.type = "button";
+  saveButton.addEventListener("click", () => {
+    todoItem.task = taskInput.value;
+    todoItem.text = textArea.value;
+    renderAllLists();
+    saveToLocaleStorage();
+    form.remove();
+  });
+
+  form.appendChild(taskInput);
+  form.appendChild(textArea);
+  form.appendChild(saveButton);
+
+  let editSection = document.querySelector("#editSection");
+  editSection.innerHTML = "";
+  editSection.appendChild(form);
 }
 
 function saveToLocaleStorage() {
